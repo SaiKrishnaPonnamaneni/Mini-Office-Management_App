@@ -1,0 +1,18 @@
+<div class="container">
+<div class="left">
+
+    <h2 routerLink="home">Home</h2>
+    <h2 routerLink="create-employee">Create Employee</h2>
+    <h2 routerLink="all-employees">AllEmployees</h2>
+    <hr>
+    <button (click)="logout()" class="btn btn-warning">LogOut</button>
+</div>
+
+
+
+<div class="right">
+    <router-outlet></router-outlet>
+
+</div>
+
+</div>

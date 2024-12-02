@@ -1,0 +1,134 @@
+<h1>All Employees</h1>
+<!-- Filter  -->
+<input type="text" [(ngModel)]=" term" (keyup)="filter()">
+
+
+<!-- Sort -->
+
+<select [(ngModel)]="column">
+     
+    <option >name</option>
+
+    <option >company</option>
+    
+    <option >role</option>
+
+</select>
+
+<select [(ngModel)]="order">
+     
+    <option value="asc">Ascending Order</option>
+
+    <option value="desc">Descending Order</option>
+    
+
+</select>
+
+<button (click)="sort()">sort</button>
+
+<!-- Pagination -->
+
+<select [(ngModel)]="limit">
+     
+    <option >10</option>
+
+    <option >20</option>
+    
+    <option >30</option>
+
+</select>
+
+<select [(ngModel)]="page">
+     
+    <option >1</option>
+
+    <option >2</option>
+    
+
+</select>
+
+<button (click)="pagination()">Pagination</button>
+
+
+
+
+<!-- GetEmployees -->
+<table  border="1px">
+
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Package</th>
+            <th>Email</th>
+            <th>Dob</th>
+            <th>Adress</th>
+            <th>Hikes</th>
+            <th>WorkMode</th>
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employee">
+            <td>{{employee.id}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.company}}</td>
+            <td>{{employee.role}}</td>
+            <td>{{employee.package}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.dob}}</td>
+            <td>
+      {{employee.address.addressLine}}&#44;
+      {{employee.address.city}}&#44;
+      {{employee.address.state}}&#44;
+      {{employee.address.pincode}}
+    </td>
+    <td>
+        {{employee.hikes.year }} 
+        {{employee.hikes.percentage}}
+      </td>
+            <td>{{employee.workMode}}</td>
+
+            <td>
+                <ng-container *ngIf="employee.workMode === 'remote'">
+                  {{ employee.wifibill }}
+                </ng-container>
+                <ng-container *ngIf="employee.workMode === 'wfo'">
+                  {{ employee.travelfee }}
+                </ng-container>
+              </td>
+
+
+            <td>
+            <button (click)="delete(employee.id)"  class="btn btn-danger">Delete</button>
+            </td>
+           
+        </tr>
+    </tbody>
+</table>
+
+<!--  {
+        "id": "89",
+        "name": "siddu siddarth roy sudha boy",
+        "company": "babu sudha pvt lmt",
+        "role": "sudha with sudharshan babu",
+        "package": "989",
+        "email": "sudharshannaidu@sudhashetty.sudhachitti",
+        "dob": "1478",
+        "address": {
+            "addressLine": "sudha  the danger",
+            "city": "sudha simley",
+            "state": "sudha state",
+            "pincode": "sudha code"
+        },
+        "hikes": [
+            {
+                "year": null,
+                "percentage": null
+            }
+        ],
+        "workMode": "remote"
+    }, -->

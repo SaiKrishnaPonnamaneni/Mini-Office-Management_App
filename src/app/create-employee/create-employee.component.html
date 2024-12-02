@@ -1,0 +1,114 @@
+<form action="" [formGroup]="employeeForm">
+    <label for="">Name</label>
+    <input type="text" formControlName="name"><br><br>
+
+    <label for="">Comany</label>
+    <input type="text" formControlName="company"><br><br>
+
+    <label for="">Role</label>
+    <input type="text" formControlName="role"><br><br>
+
+    <label for="">Package</label>
+    <input type="text" formControlName="package"><br><br>
+
+    <label for="">Email</label>
+    <input type="text" formControlName="email"><br><br>
+
+    <label for="">Bob</label>
+    <input type="text" formControlName="dob"><br><br>
+
+    <!-- Address -->
+
+    <div formGroupName="address">
+
+    <label for="">AddressLine</label>
+    <input type="text" formControlName="addressLine"><br><br>
+
+    <label for="">City</label>
+    <input type="text" formControlName="city"><br><br>
+
+    <label for="">State</label>
+    <input type="text" formControlName="state"><br><br>
+
+    <label for="">Pincode</label>
+    <input type="text" formControlName="pincode"><br><br>
+
+    </div>
+
+  <!-- Hikes -->
+
+    <label for="">Hikes</label>
+    <button class="btn btn-info" (click)="addHike()">Add Hikes</button><br><br>
+
+    <div formArrayName="hikes">
+        <div *ngFor="let hike of hikesFormArray.controls; let i=index">
+
+            <div  [formGroupName]="i">
+
+                <h2>Hike {{i+1}}</h2>
+
+                <label for="">Year</label>
+                <input type="date" formControlName="year">
+
+
+                <label for="">Percentage</label>
+                <input type="number" formControlName="percentage">
+
+               <button class="btn btn-danger" (click)="deleteHike(i)">delete</button>
+              <hr>
+            </div>
+
+            
+        </div>
+
+    </div>
+
+    <!-- WorkMode -->
+    <form [formGroup]="employeeForm">
+        <label for="workMode">WorkMode:</label>
+        <input type="radio" name="workMode" formControlName="workMode" value="remote">
+        <label for="remote">Remote</label>
+        <input type="radio" name="workMode" formControlName="workMode" value="wfo">
+        <label for="wfo">WFO</label>
+        <br>
+      
+        <div *ngIf="employeeForm.get('workMode')?.value === 'remote'">
+          <label for="wifibill">WifiBill</label>
+          <input type="number" formControlName="wifibill">
+          <br>
+        </div>
+      
+        <div *ngIf="employeeForm.get('workMode')?.value === 'wfo'">
+          <label for="travelfee">TravelFee</label>
+          <input type="number" formControlName="travelfee">
+          <br>
+        </div>
+      </form>
+
+
+
+
+    <button (click)="submit()" class="btn btn-warning">Submit</button>
+</form>
+<!--  {
+        "id": "89",
+        "name": "siddu siddarth roy sudha boy",
+        "company": "babu sudha pvt lmt",
+        "role": "sudha with sudharshan babu",
+        "package": "989",
+        "email": "sudharshannaidu@sudhashetty.sudhachitti",
+        "dob": "1478",
+        "address": {
+            "addressLine": "sudha  the danger",
+            "city": "sudha simley",
+            "state": "sudha state",
+            "pincode": "sudha code"
+        },
+        "hikes": [
+            {
+                "year": null,
+                "percentage": null
+            }
+        ],
+        "workMode": "remote"
+    }, -->
